@@ -34,13 +34,17 @@ namespace xadrez_console.tabuleiro
 
         public void ColocarPeca(Peca peca, Posicao posicao)
         {
+            if (existePeca(posicao))
+            {
+                throw new TabuleiroException("Já existe uma peca nessa posição");
+            }
             Pecas[posicao.Linha, posicao.Coluna] = peca;
             peca.Posicao = posicao;
         }
 
         public bool posicaoValida(Posicao posicao)
         {
-            if (posicao.Linha < 0 || posicao.Linha >= Linhas)
+            if (posicao.Linha < 0 || posicao.Linha >= Linhas || posicao.Coluna < 0 || posicao.Coluna >= Colunas )
             {
                 return false;
             }
