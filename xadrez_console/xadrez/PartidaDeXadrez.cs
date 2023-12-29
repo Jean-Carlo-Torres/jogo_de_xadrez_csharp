@@ -15,7 +15,7 @@ namespace xadrez_console.xadrez
             Tab = new Tabuleiro(8, 8);
             _turno = 1;
             _jogadorAtual = Cor.Branca;
-            colocarPecas();
+            ColocarPecas();
             Terminada = false;
         }
 
@@ -27,7 +27,7 @@ namespace xadrez_console.xadrez
             Tab.ColocarPeca(peca, destino);
         }
 
-        private void colocarPecas()
+        private void ColocarPecas()
         {
             Tab.ColocarPeca(new Torre(Tab, Cor.Branca), new PosicaoXadrez('c', 1).ToPosicao());
             Tab.ColocarPeca(new Torre(Tab, Cor.Branca), new PosicaoXadrez('c', 2).ToPosicao());

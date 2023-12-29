@@ -26,15 +26,15 @@ namespace xadrez_console.tabuleiro
             return Pecas[posicao.Linha, posicao.Coluna];
         }
 
-        public bool existePeca(Posicao posicao)
+        public bool ExistePeca(Posicao posicao)
         {
-            validarPosicao(posicao);
+            ValidarPosicao(posicao);
             return Peca(posicao) != null;
         }
 
         public void ColocarPeca(Peca peca, Posicao posicao)
         {
-            if (existePeca(posicao))
+            if (ExistePeca(posicao))
             {
                 throw new TabuleiroException("Já existe uma peca nessa posição");
             }
@@ -53,7 +53,7 @@ namespace xadrez_console.tabuleiro
             return aux;
         }
 
-        public bool posicaoValida(Posicao posicao)
+        public bool PosicaoValida(Posicao posicao)
         {
             if (posicao.Linha < 0 || posicao.Linha >= Linhas || posicao.Coluna < 0 || posicao.Coluna >= Colunas )
             {
@@ -62,9 +62,9 @@ namespace xadrez_console.tabuleiro
             return true;
         }
 
-        public void validarPosicao(Posicao posicao)
+        public void ValidarPosicao(Posicao posicao)
         {
-            if (!posicaoValida(posicao))
+            if (!PosicaoValida(posicao))
             {
                 throw new TabuleiroException("Posição inválida");
             }
