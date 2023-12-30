@@ -5,14 +5,15 @@ namespace xadrez_console.xadrez
 {
     public class Rei : Peca
     {
-        public Rei(Tabuleiro tab, Cor cor) : base(tab, cor)
+        private PartidaDeXadrez Partida { get; set; }
+        public Rei(Tabuleiro tab, Cor cor, PartidaDeXadrez partida) : base(tab, cor)
         {
-
+            Partida = partida;
         }
 
-        private bool PodeMover(Posicao pos)
+        private bool PodeMover(Posicao posicao)
         {
-            Peca peca = Tab.Peca(pos);
+            Peca peca = Tab.Peca(posicao);
             return peca == null || peca.Cor != Cor;
         }
 
