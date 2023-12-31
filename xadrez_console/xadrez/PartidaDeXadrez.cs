@@ -36,6 +36,27 @@ namespace xadrez_console.xadrez
             {
                 _capturadas.Add(pecaCapturada);
             }
+
+            // #jogadaespecial roque pequeno
+            if (peca is Rei && destino.Coluna == origem.Coluna + 2)
+            {
+                Posicao origemT = new Posicao(origem.Linha, origem.Coluna + 3);
+                Posicao destinoT = new Posicao(origem.Linha, origem.Coluna + 1);
+                Peca T = Tab.RemoverPeca(origemT);
+                T.IncrementarQteMovimentos();
+                Tab.ColocarPeca(T, destinoT);
+            }
+
+            // #jogadaespecial roque grande
+            if (peca is Rei && destino.Coluna == origem.Coluna - 2)
+            {
+                Posicao origemT = new Posicao(origem.Linha, origem.Coluna - 4);
+                Posicao destinoT = new Posicao(origem.Linha, origem.Coluna - 1);
+                Peca T = Tab.RemoverPeca(origemT);
+                T.IncrementarQteMovimentos();
+                Tab.ColocarPeca(T, destinoT);
+            }
+
             return pecaCapturada;
         }
 
@@ -49,6 +70,26 @@ namespace xadrez_console.xadrez
                 _capturadas.Remove(pecaCapturada);
             }
             Tab.ColocarPeca(peca, origem);
+
+            // #jogadaespecial roque pequeno
+            if (peca is Rei && destino.Coluna == origem.Coluna + 2)
+            {
+                Posicao origemT = new Posicao(origem.Linha, origem.Coluna + 3);
+                Posicao destinoT = new Posicao(origem.Linha, origem.Coluna + 1);
+                Peca T = Tab.RemoverPeca(destinoT);
+                T.DecrementarQteMovimentos();
+                Tab.ColocarPeca(T, origemT);
+            }
+
+            // #jogadaespecial roque grande
+            if (peca is Rei && destino.Coluna == origem.Coluna - 2)
+            {
+                Posicao origemT = new Posicao(origem.Linha, origem.Coluna - 4);
+                Posicao destinoT = new Posicao(origem.Linha, origem.Coluna - 1);
+                Peca T = Tab.RemoverPeca(destinoT);
+                T.DecrementarQteMovimentos();
+                Tab.ColocarPeca(T, origemT);
+            }
         }
 
         public void RealizaJogada(Posicao origem, Posicao destino)
